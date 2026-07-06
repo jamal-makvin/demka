@@ -99,10 +99,12 @@
         position: sticky;
         top: 0;
         z-index: 50;
+        box-sizing: border-box;
         display: grid;
         grid-template-rows: auto 1fr auto;
         height: 100vh;
         padding: 24px 18px;
+        overflow: hidden;
         border-right: 1px solid rgba(146, 124, 255, 0.14);
         background:
           linear-gradient(180deg, rgba(12, 13, 28, 0.94), rgba(7, 8, 17, 0.96)),
@@ -114,10 +116,11 @@
       }
 
       .sidebar-brand {
-        display: flex;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 46px;
         align-items: center;
-        justify-content: space-between;
         min-width: 0;
+        gap: 12px;
         margin-bottom: 28px;
       }
 
@@ -126,12 +129,14 @@
         align-items: center;
         gap: 12px;
         min-width: 0;
+        flex: 1;
       }
 
       .brand-logo {
         display: block;
-        width: 235px;
-        height: 76px;
+        width: 335px;
+        height: 151px;
+        max-width: 100%;
         object-fit: contain;
         object-position: left center;
         filter: drop-shadow(0 0 16px rgba(155, 77, 255, 0.45));
@@ -449,15 +454,20 @@
 
       .app-shell.is-collapsed .sidebar-brand {
         justify-content: center;
+        grid-template-columns: 1fr;
       }
 
       .app-shell.is-collapsed .brand-lockup {
+        display: flex;
         justify-content: center;
+        width: 100%;
       }
 
       .app-shell.is-collapsed .brand-logo {
-        width: 235px;
-        height: 76px;
+        display: block;
+        width: 58px;
+        height: 38px;
+        max-width: 58px;
         object-position: center;
       }
 
@@ -788,11 +798,11 @@
       }
 
       .currency-flag.flag-usd {
-        background: #101529 url("сшафлаг.png") center / 100% 100% no-repeat;
+        background: #101529 url("materials/сшафлаг.png") center / 100% 100% no-repeat;
       }
 
       .currency-flag.flag-eur {
-        background: #1747b8 url("флаг евро.png") center / contain no-repeat;
+        background: #1747b8 url("materials/флаг евро.png") center / contain no-repeat;
       }
 
       .currency-code {
@@ -2030,9 +2040,17 @@
         }
 
         .app-shell.is-collapsed .brand-logo {
-          width: 235px;
-          height: 76px;
-          object-position: left center;
+          display: block;
+          width: 58px;
+          height: 38px;
+          max-width: 58px;
+          object-position: center;
+        }
+
+        .app-shell.is-collapsed .brand-lockup {
+          display: flex;
+          justify-content: center;
+          width: 100%;
         }
 
         .app-shell.is-collapsed .nav-item {
@@ -2105,6 +2123,7 @@
 
         .top-brand {
           grid-column: 3 / 11;
+          grid-row: 1;
           order: 0;
           justify-self: center;
         }
@@ -2116,38 +2135,39 @@
 
         .profile-btn {
           grid-column: 10 / 13;
-          grid-row: auto;
+          grid-row: 1;
           justify-self: end;
         }
 
         .mobile-menu {
           grid-column: 1 / 4;
+          grid-row: 1;
           justify-self: start;
         }
 
         .search-shell {
           grid-column: 1 / -1;
-          grid-row: auto;
+          grid-row: 2;
           order: 1;
         }
 
         .balance-control,
         .rtp-control,
         .currency-control {
-          grid-row: auto;
+          grid-row: 3;
           order: 2;
           min-height: 44px;
         }
 
         .balance-control {
-          grid-column: 5 / 9;
+          grid-column: 5 / 8;
           justify-content: center;
           gap: 6px;
-          padding: 0 8px;
+          padding: 0 7px;
         }
 
         .balance-control input {
-          width: 74px;
+          width: 62px;
           font-size: 14px;
         }
 
@@ -2168,12 +2188,12 @@
         .rtp-value {
           min-width: 0;
           min-height: 36px;
-          padding: 0 6px;
-          font-size: 11px;
+          padding: 0 4px;
+          font-size: 10px;
         }
 
         .currency-control {
-          grid-column: 9 / 13;
+          grid-column: 8 / 13;
           justify-content: center;
           padding: 0;
         }
@@ -2266,7 +2286,7 @@
         <div>
           <div class="sidebar-brand">
             <div class="brand-lockup">
-              <img class="brand-logo" src="Wind-Demo.png" alt="Wind-Demo" />
+              <img class="brand-logo" src="materials/Wind-Demo.png" alt="Wind-Demo" />
             </div>
             <button class="collapse-btn" id="collapseBtn" type="button" aria-label="Свернуть меню">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -2278,7 +2298,7 @@
           <nav class="nav-list">
             <button class="nav-item is-active" type="button" data-page="home">
               <span class="nav-icon">
-                <img class="nav-icon-img nav-icon-home" src="главная.png" alt="" aria-hidden="true" />
+                <img class="nav-icon-img nav-icon-home" src="materials/главная.png" alt="" aria-hidden="true" />
               </span>
               <span class="nav-copy"><span class="nav-title">Главная</span></span>
               <span class="nav-tip">Поиск, провайдеры, категории и запуск демо-игр.</span>
@@ -2286,7 +2306,7 @@
 
             <button class="nav-item" type="button" data-page="partners">
               <span class="nav-icon">
-                <img class="nav-icon-img nav-icon-logo" src="ЛОГО ВИНД hero.png" alt="" aria-hidden="true" />
+                <img class="nav-icon-img nav-icon-logo" src="materials/ЛОГО ВИНД hero.png" alt="" aria-hidden="true" />
               </span>
               <span class="nav-copy"><span class="nav-title">WIND Partners</span></span>
               <span class="nav-tip">CPA, Hybrid, выплаты и быстрый старт.</span>
@@ -2294,7 +2314,7 @@
 
             <button class="nav-item" type="button" data-page="trending">
               <span class="nav-icon">
-                <img class="nav-icon-img" src="хайповые игры.png" alt="" aria-hidden="true" />
+                <img class="nav-icon-img" src="materials/хайповые игры.png" alt="" aria-hidden="true" />
               </span>
               <span class="nav-copy"><span class="nav-title">Хайповые игры</span></span>
               <span class="nav-tag">NEW</span>
@@ -2307,9 +2327,9 @@
           <a class="side-promo partner-link" href="https://www.wind-partners.com/apply?ref=DM5K5M" aria-label="WIND Partners">
             <img
               id="sidePromoImage"
-              src="ру-баннер (2).png"
-              data-src-ru="ру-баннер (2).png"
-              data-src-en="англ-баннер.png"
+              src="materials/ру-баннер (2).png"
+              data-src-ru="materials/ру-баннер (2).png"
+              data-src-en="materials/англ-баннер.png"
               alt="WIND Partners"
             />
           </a>
@@ -2366,7 +2386,7 @@
 
           <label class="balance-control">
             <input id="balanceInput" inputmode="decimal" value="100.00" aria-label="Демо-баланс" />
-            <img class="coin" id="balanceCoin" src="рубль знак.png" alt="RUB" />
+            <img class="coin" id="balanceCoin" src="materials/рубль знак.png" alt="RUB" />
           </label>
 
           <div class="currency-control" id="currencyControl">
@@ -2378,7 +2398,7 @@
               </svg>
             </button>
             <div class="currency-menu" id="currencyMenu" role="listbox" aria-label="Выбор валюты">
-              <button class="currency-option is-active" type="button" role="option" aria-selected="true" data-currency="RUB" data-flag="flag-rub" data-coin="рубль знак.png">
+              <button class="currency-option is-active" type="button" role="option" aria-selected="true" data-currency="RUB" data-flag="flag-rub" data-coin="materials/рубль знак.png">
                 <span class="currency-flag flag-rub" aria-hidden="true"></span>
                 <span>RUB</span>
                 <span class="currency-check" aria-hidden="true">
@@ -2387,7 +2407,7 @@
                   </svg>
                 </span>
               </button>
-              <button class="currency-option" type="button" role="option" aria-selected="false" data-currency="USD" data-flag="flag-usd" data-coin="доллар знак.png">
+              <button class="currency-option" type="button" role="option" aria-selected="false" data-currency="USD" data-flag="flag-usd" data-coin="materials/доллар знак.png">
                 <span class="currency-flag flag-usd" aria-hidden="true"></span>
                 <span>USD</span>
                 <span class="currency-check" aria-hidden="true">
@@ -2396,7 +2416,7 @@
                   </svg>
                 </span>
               </button>
-              <button class="currency-option" type="button" role="option" aria-selected="false" data-currency="EUR" data-flag="flag-eur" data-coin="евро знак.png">
+              <button class="currency-option" type="button" role="option" aria-selected="false" data-currency="EUR" data-flag="flag-eur" data-coin="materials/евро знак.png">
                 <span class="currency-flag flag-eur" aria-hidden="true"></span>
                 <span>EUR</span>
                 <span class="currency-check" aria-hidden="true">
@@ -2424,11 +2444,11 @@
         <section class="page is-active" id="page-home">
           <div class="hero-banner">
             <div class="hero-copy">
-              <img src="ЛОГО ВИНД hero.png" alt="Wind-Demo" />
+              <img src="materials/ЛОГО ВИНД hero.png" alt="Wind-Demo" />
               <h1>Заливаешь iGaming?<br />Подключайся к <span>WIND Partners</span><br />и получай до <span>$80</span> CPA</h1>
             </div>
             <div class="hero-visual" aria-hidden="true">
-              <img class="hero-rocket" src="ракета.png" alt="" />
+              <img class="hero-rocket" src="materials/ракета.png" alt="" />
             </div>
             <button class="cta" type="button" data-page-link="partners">Подробнее</button>
           </div>
@@ -2437,7 +2457,7 @@
             <div>
               <div class="section-title">
                 <span class="flame section-icon-glow">
-                  <img class="section-icon-img" src="популярные игры.png" alt="" aria-hidden="true" />
+                  <img class="section-icon-img" src="materials/популярные игры.png" alt="" aria-hidden="true" />
                 </span>
                 <h2>Популярные игры</h2>
               </div>
@@ -2458,7 +2478,7 @@
           <div class="section-head">
             <div class="section-title">
               <span class="spark section-icon-glow">
-                <img class="section-icon-img" src="хайповые игры.png" alt="" aria-hidden="true" />
+                <img class="section-icon-img" src="materials/хайповые игры.png" alt="" aria-hidden="true" />
               </span>
               <div>
                 <h2>Хайповые игры</h2>
@@ -2477,7 +2497,7 @@
           <div class="section-head" id="all-games">
             <div class="section-title">
               <span class="mini-icon section-icon-glow">
-                <img class="section-icon-img" src="все демо игры.png" alt="" aria-hidden="true" />
+                <img class="section-icon-img" src="materials/все демо игры.png" alt="" aria-hidden="true" />
               </span>
               <h2>Все демо-игры</h2>
             </div>
@@ -2507,7 +2527,7 @@
           <div class="section-head">
             <div class="section-title">
               <span class="mini-icon section-icon-glow">
-                <img class="section-icon-img" src="все демо игры.png" alt="" aria-hidden="true" />
+                <img class="section-icon-img" src="materials/все демо игры.png" alt="" aria-hidden="true" />
               </span>
               <h2>Каталог демо-слотов</h2>
             </div>
@@ -2519,7 +2539,7 @@
         <section class="page" id="page-partners">
           <div class="partners-grid">
             <div class="partner-panel">
-              <img class="partner-logo-mark" src="ЛОГО ВИНД hero.png" alt="WIND Partners" />
+              <img class="partner-logo-mark" src="materials/ЛОГО ВИНД hero.png" alt="WIND Partners" />
               <h1>WIND Partners для тех, кто <span>льет iGaming</span> профессионально</h1>
               <p>Партнерская программа интегрирована в Wind-Demo как часть продукта: можно тестировать игры, готовить креативы и быстро переходить к офферам без ощущения внешнего лендинга.</p>
               <div class="partner-actions">
@@ -2706,7 +2726,7 @@
 
       const copy = {
         ru: {
-          sidePromo: "ру-баннер (2).png",
+          sidePromo: "materials/ру-баннер (2).png",
           providerAll: "Все",
           playDemo: "Играть демо",
           favorite: "В избранное",
@@ -2814,7 +2834,7 @@
           ]
         },
         en: {
-          sidePromo: "англ-баннер.png",
+          sidePromo: "materials/англ-баннер.png",
           providerAll: "All",
           playDemo: "Play Demo",
           favorite: "Favorite",
@@ -2928,18 +2948,18 @@
       }
 
       const gameBannerMap = new Map([
-        ["sweet bonanza", "свитбананза.webp"],
-        ["gates olympus", "гатесофолимпус.webp"],
-        ["gates of olympus", "гатесофолимпус.webp"],
-        ["wanted wild", "wantedwild.webp"],
-        ["sugar rush", "шугар раш.webp"],
-        ["big bass", "биг басс.webp"],
-        ["big bass bonanza", "биг басс.webp"],
-        ["the dog house", "догхаус.webp"],
-        ["le bandit", "лебандит.webp"],
-        ["zeus hades", "zeusvshades.webp"],
-        ["fruit party", "fruitparty.webp"],
-        ["starlight princess", "starlight.webp"]
+        ["sweet bonanza", "materials/свитбананза.webp"],
+        ["gates olympus", "materials/гатесофолимпус.webp"],
+        ["gates of olympus", "materials/гатесофолимпус.webp"],
+        ["wanted wild", "materials/wantedwild.webp"],
+        ["sugar rush", "materials/шугар раш.webp"],
+        ["big bass", "materials/биг басс.webp"],
+        ["big bass bonanza", "materials/биг басс.webp"],
+        ["the dog house", "materials/догхаус.webp"],
+        ["le bandit", "materials/лебандит.webp"],
+        ["zeus hades", "materials/zeusvshades.webp"],
+        ["fruit party", "materials/fruitparty.webp"],
+        ["starlight princess", "materials/starlight.webp"]
       ]);
 
       function normalizedGameKey(value) {
@@ -3854,4 +3874,5 @@
     </script>
   </body>
 </html>
+
 
